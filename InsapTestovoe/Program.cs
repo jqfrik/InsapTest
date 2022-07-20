@@ -3,7 +3,7 @@ using InsapTestovoe;
 
 var fileCreator = new FileCreator();
 var fileName = fileCreator.CreateFileWithData(10000, 10000);
-var data = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), "test.txt"));
+var data = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), fileName));
 var dic = new ConcurrentDictionary<char, int>();
 for (int i = 0; i < data.Length; i++)
 {
