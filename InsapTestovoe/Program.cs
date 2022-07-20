@@ -1,4 +1,6 @@
 ﻿using System.Collections.Concurrent;
+using System.IO;
+using System.Linq;
 using InsapTestovoe;
 
 var fileCreator = new FileCreator();
@@ -29,5 +31,3 @@ var response = new Response()
     Char = pair.Key,
     Count = maxValue,
 };
-
-return;
