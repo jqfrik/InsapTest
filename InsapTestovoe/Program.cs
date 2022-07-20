@@ -2,24 +2,25 @@
 using InsapTestovoe;
 
 var fileCreator = new FileCreator();
-var fileName = fileCreator.CreateFileWithData(10000,10000);
-var data = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), fileName));
+var fileName = fileCreator.CreateFileWithData(10000, 10000);
+var data = File.ReadAllLines(Path.Combine(Directory.GetCurrentDirectory(), "test.txt"));
 var dic = new ConcurrentDictionary<char, int>();
-Parallel.For(0, data.Count(), (i =>
+for (int i = 0; i < data.Length; i++)
 {
     var word = data[i];
     foreach (var ch in word)
     {
-        if (dic.TryGetValue(ch, out var result))
+        char charik = ch;
+        if (dic.TryGetValue(charik, out var result))
         {
-            dic[ch] = ++result;
+            dic[charik] = ++result;
         }
         else
         {
-            dic.TryAdd(ch, 1);
+            dic.TryAdd(charik, 1);
         }
     }
-}));
+}
 
 var maxValue = dic.Values.Max(x => x);
 var pair = dic.FirstOrDefault(x => x.Value == maxValue);
